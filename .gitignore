@@ -1,0 +1,39 @@
+# =========================
+#  Tractor Service Tracker
+#  Git Ignore Configuration
+# =========================
+
+# --- Environment and secret files ---
+.env
+*.env
+
+# --- Eclipse specific files ---
+.classpath
+.project
+.settings/
+
+# --- Build output folders ---
+/bin/
+/build/
+/target/
+/dist/
+
+# --- Tomcat specific ---
+/Servers/
+/work/
+/logs/
+
+# --- OS generated files ---
+.DS_Store
+Thumbs.db
+
+# --- Temporary or cache files ---
+*.log
+*.tmp
+*.bak
+*.swp
+*.iml
+*.idea/
+
+# --- Dependency JARs (optional if you use Maven) ---
+# /WebContent/WEB-INF/lib/
