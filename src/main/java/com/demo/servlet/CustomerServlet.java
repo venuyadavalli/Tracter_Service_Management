@@ -33,7 +33,7 @@ public class CustomerServlet extends HttpServlet {
 
             if (customer != null) {
                 request.getSession().setAttribute("customer", customer);
-                response.sendRedirect("customer/customerDashboard.jsp");
+                response.sendRedirect(request.getContextPath() + "customer/customerDashboard.jsp");
             } else {
                 response.sendRedirect("customer/customerLogin.jsp?error=1");
             }

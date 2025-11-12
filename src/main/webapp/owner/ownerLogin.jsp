@@ -64,7 +64,7 @@
 <body>
     <div class="glass-card mx-auto">
         <h2 class="text-center mb-4">Owner Login</h2>
-        <form action="../OwnerServlet" method="post" class="mt-4">
+        <form action="${pageContext.request.contextPath}/OwnerServlet" method="post" class="mt-4">
             <input type="hidden" name="action" value="login">
             <div class="mb-3">
                 <label for="mobile" class="form-label">Mobile</label>

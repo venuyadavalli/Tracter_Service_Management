@@ -131,7 +131,7 @@ public class DriverServlet extends HttpServlet {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("driver/driverDashboard.jsp?section=dashboard&error=Unexpected+server+error");
+            response.sendRedirect(request.getContextPath() + "driver/driverDashboard.jsp?section=dashboard&error=Unexpected+server+error");
         }
     }
 

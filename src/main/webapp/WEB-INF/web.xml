@@ -13,7 +13,7 @@
 </web-app>
  -->
  
- <servlet>
+<servlet>
     <servlet-name>OwnerServlet</servlet-name>
     <servlet-class>com.demo.servlet.OwnerServlet</servlet-class>
 </servlet>
@@ -22,4 +22,5 @@
     <servlet-name>OwnerServlet</servlet-name>
     <url-pattern>/OwnerServlet</url-pattern>
 </servlet-mapping>
+
  

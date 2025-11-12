@@ -250,7 +250,7 @@ public class OwnerServlet extends HttpServlet {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("owner/ownerDashboard.jsp?section=" + getSectionForAction(action) + "&error=An+error+occurred");
+            response.sendRedirect(request.getContextPath() + "owner/ownerDashboard.jsp?section=" + getSectionForAction(action) + "&error=An+error+occurred");
         }
     }
 
