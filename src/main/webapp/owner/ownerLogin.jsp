@@ -12,7 +12,7 @@
         }
         body {
             /* Full background with cover */
-            background: url('/TractorServiceTracker/Images/back4.jpg') no-repeat center center fixed;
+            background: url('${pageContext.request.contextPath}/TractorServiceTracker/Images/back4.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
             display: flex;

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
@@ -11,3 +11,15 @@
 </welcome-file-list>
     
 </web-app>
+ -->
+ 
+ <servlet>
+    <servlet-name>OwnerServlet</servlet-name>
+    <servlet-class>com.demo.servlet.OwnerServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>OwnerServlet</servlet-name>
+    <url-pattern>/OwnerServlet</url-pattern>
+</servlet-mapping>
+ 

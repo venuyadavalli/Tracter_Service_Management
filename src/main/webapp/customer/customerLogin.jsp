@@ -11,7 +11,7 @@
             padding: 0;
         }
         body {
-            background: url('/TractorServiceTracker/Images/back3.jpg') no-repeat center center fixed;
+            background: url('${pageContext.request.contextPath}/TractorServiceTracker/Images/back3.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
             display: flex;

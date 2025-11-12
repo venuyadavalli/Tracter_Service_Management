@@ -5,7 +5,7 @@ FROM tomcat:9.0-jdk17
 RUN rm -rf /usr/local/tomcat/webapps/ROOT
 
 # Copy your WAR file into Tomcat webapps folder
-COPY TractorServiceTracker.war /usr/local/tomcat/webapps/ROOT.war
+COPY TractorServiceTracker.war /usr/local/tomcat/webapps/TractorServiceTracker.war
 
 # Expose port 8080 (Render uses this)
 EXPOSE 8080
