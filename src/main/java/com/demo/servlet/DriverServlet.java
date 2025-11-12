@@ -32,16 +32,16 @@ public class DriverServlet extends HttpServlet {
         	    if (loggedIn != null) {
         	        session.setAttribute("driver", loggedIn);
         	        // Recommended: always use the section param
-        	        response.sendRedirect("driver/driverDashboard.jsp?section=dashboard&success=Login+successful");
+        	        response.sendRedirect(request.getContextPath() + "driver/driverDashboard.jsp?section=dashboard&success=Login+successful");
         	    } else {
-        	        response.sendRedirect("driver/driverLogin.jsp?error=1");
+        	        response.sendRedirect(request.getContextPath() + "driver/driverLogin.jsp?error=1");
         	    }
         	    return;
         	}
         	else {
                 // For all other actions, driver session is needed
                 if (driver == null) {
-                    response.sendRedirect("driver/driverLogin.jsp");
+                    response.sendRedirect(request.getContextPath() + "driver/driverLogin.jsp");
                     return;
                 }
 
@@ -53,10 +53,10 @@ public class DriverServlet extends HttpServlet {
                         String mobile = request.getParameter("customerMobile");
                         int custId = dao.addCustomer(driverId, name, mobile);
                         if (custId <= 0) {
-                            response.sendRedirect("driver/driverDashboard.jsp?section=customers&error=Customer+addition+failed");
+                            response.sendRedirect(request.getContextPath() + "driver/driverDashboard.jsp?section=customers&error=Customer+addition+failed");
                         } else {
                             request.getSession().setAttribute("lastAddedCustomerId", custId);
-                            response.sendRedirect("driver/driverDashboard.jsp?section=customers&success=Customer+added&customerId=" + custId);
+                            response.sendRedirect(request.getContextPath() + "driver/driverDashboard.jsp?section=customers&success=Customer+added&customerId=" + custId);
                         }
                         break;
 
@@ -80,10 +80,10 @@ public class DriverServlet extends HttpServlet {
                                     smsEx.printStackTrace();
                                 }
                             }
-                            response.sendRedirect("driver/driverDashboard.jsp?section=jobs&success=Job+added+successfully");
+                            response.sendRedirect(request.getContextPath() + "driver/driverDashboard.jsp?section=jobs&success=Job+added+successfully");
                         } catch (Exception e) {
                             e.printStackTrace();
-                            response.sendRedirect("driver/driverDashboard.jsp?section=jobs&error=Failed+to+add+job");
+                            response.sendRedirect(request.getContextPath() + "driver/driverDashboard.jsp?section=jobs&error=Failed+to+add+job");
                         }
                         break;
 

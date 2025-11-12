@@ -34,7 +34,7 @@ public class OwnerServlet extends HttpServlet {
         if (!"login".equals(action) && !"register".equals(action) && !"forgotPassword".equals(action)) {
             ownerSession = (Owner) request.getSession().getAttribute("owner");
             if (ownerSession == null) {
-                response.sendRedirect("owner/ownerLogin.jsp");
+                response.sendRedirect(request.getContextPath() + "owner/ownerLogin.jsp");
                 return;
             }
         }
@@ -48,12 +48,12 @@ public class OwnerServlet extends HttpServlet {
 
             // Validate vehicle number (new owners only)
             if (!vehicleNo.matches("^[A-Z]{2}\\d{2}[A-Z]{1,3}\\d{1,4}$")) {
-                response.sendRedirect("owner/ownerRegister.jsp?invalidVehicle=1");
+                response.sendRedirect(request.getContextPath() + "owner/ownerRegister.jsp?invalidVehicle=1");
                 return;
             }
 
             dao.registerOwner(name, mobile, vehicleNo, password);
-            response.sendRedirect("owner/ownerLogin.jsp");
+            response.sendRedirect(request.getContextPath() + "owner/ownerLogin.jsp");
             return;
         }
 
@@ -66,9 +66,9 @@ public class OwnerServlet extends HttpServlet {
             Owner owner = dao.validateOwner(mobile, vehicleNo, password);
             if (owner != null) {
                 request.getSession().setAttribute("owner", owner);
-                response.sendRedirect("owner/ownerDashboard.jsp");
+                response.sendRedirect(request.getContextPath() + "owner/ownerDashboard.jsp");
             } else {
-                response.sendRedirect("owner/ownerLogin.jsp?error=1");
+                response.sendRedirect(request.getContextPath() + "owner/ownerLogin.jsp?error=1");
             }
             return;
         }
@@ -81,9 +81,9 @@ public class OwnerServlet extends HttpServlet {
 
             if (password != null) {
                 SmsUtil.sendPasswordSms(mobile, password);
-                response.sendRedirect("owner/ownerLogin.jsp?resetSent=1");
+                response.sendRedirect(request.getContextPath() + "owner/ownerLogin.jsp?resetSent=1");
             } else {
-                response.sendRedirect("owner/ownerLogin.jsp?error=1");
+                response.sendRedirect(request.getContextPath() + "owner/ownerLogin.jsp?error=1");
             }
             return;
         }
@@ -97,14 +97,14 @@ public class OwnerServlet extends HttpServlet {
                 String tractor = request.getParameter("tractorNumber");
                 String driverPassword = request.getParameter("driverPassword");
                 dao.addDriver(ownerId, name, tractor, driverPassword);
-                response.sendRedirect("owner/ownerDashboard.jsp?section=drivers&success=Driver+added+successfully");
+                response.sendRedirect(request.getContextPath() + "owner/ownerDashboard.jsp?section=drivers&success=Driver+added+successfully");
                 return;
             }
 
             if ("deleteDriver".equals(action)) {
                 int driverId = Integer.parseInt(request.getParameter("driverId"));
                 dao.deleteDriver(driverId, ownerId);
-                response.sendRedirect("owner/ownerDashboard.jsp?section=drivers&success=Driver+deleted+successfully");
+                response.sendRedirect(request.getContextPath() + "owner/ownerDashboard.jsp?section=drivers&success=Driver+deleted+successfully");
                 return;
             }
             
@@ -119,7 +119,7 @@ public class OwnerServlet extends HttpServlet {
                 }
                 
                 dao.updateDriver(driverId, ownerId, name, tractorNumber, driverPassword);
-                response.sendRedirect("owner/ownerDashboard.jsp?section=drivers&success=Driver+updated+successfully");
+                response.sendRedirect(request.getContextPath() + "owner/ownerDashboard.jsp?section=drivers&success=Driver+updated+successfully");
                 return;
             }
 
@@ -127,7 +127,7 @@ public class OwnerServlet extends HttpServlet {
                 int jobId = Integer.parseInt(request.getParameter("jobId"));
                 double paidAmount = Double.parseDouble(request.getParameter("paidAmount"));
                 dao.updatePayment(jobId, paidAmount);
-                response.sendRedirect("owner/ownerDashboard.jsp?section=customer&success=Payment+updated");
+                response.sendRedirect(request.getContextPath() + "owner/ownerDashboard.jsp?section=customer&success=Payment+updated");
                 return;
             }
 
@@ -150,7 +150,7 @@ public class OwnerServlet extends HttpServlet {
                 String toolName = request.getParameter("toolName");
                 double rate = Double.parseDouble(request.getParameter("rate"));
                 dao.addTool(ownerId, toolName, rate);
-                response.sendRedirect("owner/ownerDashboard.jsp?section=tools&success=Tool+added+successfully");
+                response.sendRedirect(request.getContextPath() + "owner/ownerDashboard.jsp?section=tools&success=Tool+added+successfully");
                 return;
             }
 
@@ -159,14 +159,14 @@ public class OwnerServlet extends HttpServlet {
                 String name = request.getParameter("toolName");
                 double rate = Double.parseDouble(request.getParameter("rate"));
                 dao.updateTool(toolId, ownerId, name, rate);
-                response.sendRedirect("owner/ownerDashboard.jsp?section=tools&success=Tool+updated+successfully");
+                response.sendRedirect(request.getContextPath() + "owner/ownerDashboard.jsp?section=tools&success=Tool+updated+successfully");
                 return;
             }
 
             if ("deleteTool".equals(action)) {
                 int toolId = Integer.parseInt(request.getParameter("toolId"));
                 dao.deleteTool(toolId, ownerId);
-                response.sendRedirect("owner/ownerDashboard.jsp?section=tools&success=Tool+deleted+successfully");
+                response.sendRedirect(request.getContextPath() + "owner/ownerDashboard.jsp?section=tools&success=Tool+deleted+successfully");
                 return;
             }
 
@@ -174,14 +174,14 @@ public class OwnerServlet extends HttpServlet {
                 int customerId = Integer.parseInt(request.getParameter("customerId"));
                 double paidAmount = Double.parseDouble(request.getParameter("paidAmount"));
                 dao.updateCustomerPayment(customerId, paidAmount);
-                response.sendRedirect("owner/ownerDashboard.jsp?section=customer&success=Payment+updated+successfully");
+                response.sendRedirect(request.getContextPath() + "owner/ownerDashboard.jsp?section=customer&success=Payment+updated+successfully");
                 return;
             }
 
             if ("deleteCustomer".equals(action)) {
                 int customerId = Integer.parseInt(request.getParameter("customerId"));
                 dao.deleteCustomer(customerId);
-                response.sendRedirect("owner/ownerDashboard.jsp?section=customer&success=Customer+deleted+successfully");
+                response.sendRedirect(request.getContextPath() + "owner/ownerDashboard.jsp?section=customer&success=Customer+deleted+successfully");
                 return;
             }
 

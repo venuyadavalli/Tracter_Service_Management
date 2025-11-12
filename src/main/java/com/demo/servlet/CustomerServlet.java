@@ -35,13 +35,13 @@ public class CustomerServlet extends HttpServlet {
                 request.getSession().setAttribute("customer", customer);
                 response.sendRedirect(request.getContextPath() + "customer/customerDashboard.jsp");
             } else {
-                response.sendRedirect("customer/customerLogin.jsp?error=1");
+                response.sendRedirect(request.getContextPath() + "customer/customerLogin.jsp?error=1");
             }
         }
         else if ("exportPDF".equals(action)) {
             Customer customer = (Customer) request.getSession().getAttribute("customer");
             if (customer == null) {
-                response.sendRedirect("customer/customerLogin.jsp");
+                response.sendRedirect(request.getContextPath() + "customer/customerLogin.jsp");
                 return;
             }
 

@@ -57,7 +57,7 @@
 <body>
     <div class="glass-card mx-auto">
         <h2 class="text-center mb-4">Customer Login</h2>
-        <form action="../CustomerServlet" method="post" class="mt-4">
+        <form action="${pageContext.request.contextPath}/CustomerServlet" method="post" class="mt-4">
             <input type="hidden" name="action" value="login">
             <div class="mb-3">
                 <label for="name">Name</label>

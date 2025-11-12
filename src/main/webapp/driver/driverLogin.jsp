@@ -11,7 +11,7 @@
             padding: 0;
         }
         body {
-            background: url('${pageContext.request.contextPath}/TractorServiceTracker/Images/back1.jpg') no-repeat center center fixed;
+            background: url('${pageContext.request.contextPath}/Images/back1.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
             display: flex;
@@ -55,7 +55,7 @@
 <body>
     <div class="glass-card mx-auto">
         <h2 class="text-center mb-4">Driver Login</h2>
-        <form action="../DriverServlet" method="post" class="mt-4">
+        <form action="${pageContext.request.contextPath}/DriverServlet" method="post" class="mt-4">
             <input type="hidden" name="action" value="login">
             <div class="mb-3">
                 <label for="tractorNumber">Tractor Number</label>
